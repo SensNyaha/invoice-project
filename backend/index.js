@@ -6,6 +6,7 @@ import { morganMiddleware, systemLogs } from "./utils/Logger.js";
 import connectToDB from "./config/connectDB.js";
 import { configDotenv } from "dotenv";
 import path from "path";
+import ExpressMongoSanitize from "express-mongo-sanitize";
 
 configDotenv({path: path.join(process.cwd(), "..", ".env")})
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(morganMiddleware);
+app.use(ExpressMongoSanitize());
 
 app.get("/api/v1/test", (req, res) => {
     res.json({Hi: "Welcome!"});
