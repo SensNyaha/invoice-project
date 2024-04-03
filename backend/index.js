@@ -7,6 +7,7 @@ import connectToDB from "./config/connectDB.js";
 import { configDotenv } from "dotenv";
 import path from "path";
 import ExpressMongoSanitize from "express-mongo-sanitize";
+import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 configDotenv({path: path.join(process.cwd(), "..", ".env")})
 
@@ -21,6 +22,11 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(morganMiddleware);
 app.use(ExpressMongoSanitize());
+
+app.use(errorHandler);
+app.use(notFound);
+
+
 
 app.get("/api/v1/test", (req, res) => {
     res.json({Hi: "Welcome!"});

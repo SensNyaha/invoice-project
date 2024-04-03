@@ -2,7 +2,7 @@ import "dotenv/config";
 import nodemailer from "nodemailer";
 import { configDotenv } from "dotenv";
 
-configDotenv({path: path.join(process.cwd(), "..", ".env")})
+configDotenv({path: path.join(process.cwd(), "..", "..", ".env")})
 
 let transporter;
 
