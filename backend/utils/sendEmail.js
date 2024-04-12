@@ -3,8 +3,8 @@ import fs from "fs";
 import handlebars from "handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
-import transporter from "../helpers/emailTransport";
-import { systemLogs } from "./Logger";
+import transporter from "../helpers/emailTransport.js";
+import { systemLogs } from "./Logger.js";
 
 configDotenv({path: path.join(process.cwd(), "..", "..", ".env")})
 
@@ -27,7 +27,7 @@ const sendEmail = async(email ,subj, payload, template) => {
             html: compiledTemplate(payload)
         };
 
-        await transporter.sendEmail(emailOptions);
+        await transporter.sendMail(emailOptions);
     } catch (error) {
         systemLogs.error(`Email doesnt send: ${error}`)
     }

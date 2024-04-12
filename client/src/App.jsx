@@ -1,6 +1,6 @@
 const App = () => {
   return (
-    <div><h1>Welcome to infoice app!!!</h1></div>
+    <div><h1>Добро пожаловать в приложение "Чековая книжка"</h1></div>
   )
 }
 

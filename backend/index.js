@@ -9,6 +9,8 @@ import path from "path";
 import ExpressMongoSanitize from "express-mongo-sanitize";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
+import authRoutes from './routes/authRoutes.js';
+
 configDotenv({path: path.join(process.cwd(), "..", ".env")})
 
 const app = express();
@@ -23,14 +25,15 @@ app.use(cookieParser());
 app.use(morganMiddleware);
 app.use(ExpressMongoSanitize());
 
-app.use(errorHandler);
-app.use(notFound);
 
-
+app.use('/api/v1/auth', authRoutes);
 
 app.get("/api/v1/test", (req, res) => {
     res.json({Hi: "Welcome!"});
 })
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 

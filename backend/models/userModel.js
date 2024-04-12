@@ -2,7 +2,7 @@ import mongoose, {Schema} from "mongoose";
 import "dotenv/config";
 import bcrypt from "bcryptjs";
 import validator from "validator";
-import { USER } from "../constants";
+import { USER } from "../constants/index.js";
 
 
 const userSchema = new Schema({
@@ -20,7 +20,7 @@ const userSchema = new Schema({
         trim: true,
         validate: {
             validator: function(value) {
-                return /^[A-Z][a-z0-9-_]{3,23}$/.test(value)
+                return /^[A-Za-z0-9-_]{3,23}$/.test(value)
             },
             message: "Username must be alphanumeric, withour special chars. Hyphens and undescores allowed"
         }
@@ -28,7 +28,6 @@ const userSchema = new Schema({
     firstName: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
         validate: [
             validator.isAlphanumeric, "First Name must by alphanumeric"
@@ -37,7 +36,6 @@ const userSchema = new Schema({
     lastName: {
         type: String,
         required: true,
-        unique: true,
         trim: true,
         validate: [
             validator.isAlphanumeric, "Last Name must by alphanumeric"
@@ -94,14 +92,14 @@ const userSchema = new Schema({
     refreshToken: [String],
 }, {timestamps: true});
 
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function (next) {
     if (this.roles.length === 0) {
         this.roles.push(USER);
-        next();
     }
+    next();
 })
 
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function(next) {
     if (!this.isModified("password")) {
         return next();
     }
@@ -113,7 +111,7 @@ userSchema.pre("save", async (next) => {
     next();
 })
 
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function (next) {
     if (!this.isModified("password") || this.isNew) {
         return next();
     }
@@ -122,7 +120,7 @@ userSchema.pre("save", async (next) => {
     next();
 })
 
-userSchema.methods.comparePassword = async (given) => {
+userSchema.methods.comparePassword = async function (given) {
     return await bcrypt.compare(given, this.password);
 }
 

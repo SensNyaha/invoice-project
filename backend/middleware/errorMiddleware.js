@@ -4,13 +4,13 @@ const errorHandler = (e, req, res, next) => {
 
     return res.status(statusCode).json({
         success: false,
-        message: err.message,
+        message: e.message,
         statusCode,
-        stack: process.env.NODE_ENV === "production" ? null : err.stack
+        stack: process.env.NODE_ENV === "production" ? null : e.stack
     })
 }
 
-const notFound = (req, res) => {
+const notFound = (req, res, next) => {
     const error = new Error(`That route doesnt exist - ${req.originalUrl}`);
     res.status(404);
     next(error);
