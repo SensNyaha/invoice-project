@@ -10,6 +10,8 @@ import ExpressMongoSanitize from "express-mongo-sanitize";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import { apiLimiter } from "./middleware/apiLimiter.js";
 
 configDotenv({path: path.join(process.cwd(), "..", ".env")})
 
@@ -27,6 +29,7 @@ app.use(ExpressMongoSanitize());
 
 
 app.use('/api/v1/auth', authRoutes);
+app.use("/api/v1/user", apiLimiter, userRoutes);
 
 app.get("/api/v1/test", (req, res) => {
     res.json({Hi: "Welcome!"});
@@ -46,4 +49,3 @@ connectToDB()
             )
         })
     })
-

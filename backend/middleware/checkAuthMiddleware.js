@@ -1,9 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
-import { Jwt } from "jsonwebtoken";
-import USER from '../models/userModel';
-import { configDotenv } from "dotenv";
-
-configDotenv({path: path.join(process.cwd(), "..", "..", ".env")})
+import jwt from "jsonwebtoken";
+import User from '../models/userModel.js';
 
 
 const checkAuth = expressAsyncHandler(async (req, res, next) => {
@@ -16,7 +13,7 @@ const checkAuth = expressAsyncHandler(async (req, res, next) => {
     if (authHeader && authHeader.startsWith("Bearer ")) {
         jwt_token = authHeader.split(" ")[1];
 
-        Jwt.verify(
+        jwt.verify(
             jwt_token, 
             process.env.JWT_ACCESS_SECRET_KEY,
             async (err, decoded) => {
