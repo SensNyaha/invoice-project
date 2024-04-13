@@ -52,7 +52,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
 
         const cookies = req.cookies;
 
-        const newRefreshTokenArray = !cookies?.jwt ? existingUser.refreshToken : existingUser.refreshToken.filter((e) => e !== cookies.jwt);
+        let newRefreshTokenArray = !cookies?.jwt ? existingUser.refreshToken : existingUser.refreshToken.filter((e) => e !== cookies.jwt);
 
         if (cookies?.jwt) {
             const refreshToken = cookies.jwt;
