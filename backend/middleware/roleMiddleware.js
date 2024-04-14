@@ -1,4 +1,4 @@
-import { ADMIN, USER } from "../constants";
+import { ADMIN, USER } from "../constants/index.js";
 
 const ROLES = {
     User: USER,
