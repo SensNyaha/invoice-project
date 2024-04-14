@@ -29,7 +29,7 @@ function Footer() {
                 color: "#07f011"
             }}>
                 <FaMoneyBillWave/>
-                Потому что деньги нужны также как воздух
+                {"\t"}Потому что деньги нужны также как воздух{"\t"}
                 <FaMoneyBillWave/>
             </Typography>
             <Copyright/>
