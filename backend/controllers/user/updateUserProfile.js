@@ -34,7 +34,7 @@ const updateUserProfile = expressAsyncHandler(async (req, res) => {
 
     res.json({
         success: true,
-        message: `${user.firstName}'s account was successfully updated`,
+        message: `Аккаунт ${user.firstName} был успешно обновлен`,
         updatedProfile
     })
 })
