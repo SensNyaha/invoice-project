@@ -14,8 +14,8 @@ const adminDeleteUserProfileById = expressAsyncHandler(async (req, res) => {
             message: `Пользователь ${existingUser.username} был удален администратором!`
         });
     } else {
-        res.status(400).json({
-            status: 400,
+        res.status(404).json({
+            status: 404,
             message: "Пользователя с таким ID не обнаружено"
         });
         throw new Error("User was not found!");
