@@ -14,7 +14,7 @@ import AuthButtonAnimation from "../../../animations/authButtonAnimation.js"
 // import Spinner from '../../../animations/'
 import useTitle from "../../../hooks/useTitle.jsx"
 
-const USERNAME_REGEXP = //;
+const USERNAME_REGEXP = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!#@$%^&*()+=._-]).{6,}$/;
 
 function RegisterForm() {
   return (
