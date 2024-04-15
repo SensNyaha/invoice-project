@@ -13,12 +13,14 @@ const StyledTypography = styled(Typography)(({theme}) => (
 ))
 
 const CreateAccountButton = styled(Button)({
-    borderColor:"#000",
+    backgroundColor: "#006888",
+    borderColor:"#555 !important",
     borderRadius: "25px",
     border: "3px solid",
     "&:hover": {
-        borderColor: "#07f011",
+        borderColor: "#fff !important",
         boxShadow: "none",
+        backgroundColor:"#087fa4"
     }
 })
 
@@ -50,7 +52,7 @@ function HomePage() {
                             color="success" 
                             size="large" 
                             sx={{fontSize:"1.5em", borderRadius: '25px'}}
-                            onClick={() => navigate("/register")}
+                            // onClick={() => navigate("/register")}
                         >
                             <Link 
                                 component={RouterLink} 

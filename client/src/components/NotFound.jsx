@@ -8,7 +8,8 @@ function NotFound() {
             display: "flex",
             flexDirection: "row",
             flexWrap:"wrap",
-            justifyContent:'center'
+            justifyContent:'center',
+            height:"94vh"
         }}>
             <Typography variant="h1" align="center" sx={{fontSize:"10rem", mt: "14rem"}}>
                 404 NOT FOUND
