@@ -14,6 +14,8 @@ import StyledDivider from "../../../components/StyledDivider.jsx";
 import AuthWrapper from "../forms/AuthWrapper.jsx";
 import RegisterForm from "../forms/RegisterForm.jsx";
 
+import "./register.css";
+
 function RegisterPage() {
     return (
         <AuthWrapper>
@@ -37,7 +39,10 @@ function RegisterPage() {
                             }}
                         >
                             <FaUserCheck className="auth-svg" />
-                            <Typography variant="h1">Регистрация</Typography>
+
+                            <Typography variant="h1" sx={{ fontSize: "44px" }}>
+                                &nbsp;Регистрация
+                            </Typography>
                         </Box>
                         <StyledDivider />
                     </Grid>

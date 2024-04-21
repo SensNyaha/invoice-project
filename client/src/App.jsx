@@ -10,6 +10,7 @@ import { customTheme } from "./customTheme.js";
 import useTitle from "./hooks/useTitle.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import RegisterPage from "./features/auth/pages/RegisterPage.jsx";
+import VerificationPage from "./features/auth/pages/VerificationPage.jsx";
 
 const App = () => {
     useTitle("Чековая книжка - Стартовая страница");
@@ -20,7 +21,7 @@ const App = () => {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
                     <Route path="register" element={<RegisterPage />} />
-
+                    <Route path="auth/verify" element={<VerificationPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

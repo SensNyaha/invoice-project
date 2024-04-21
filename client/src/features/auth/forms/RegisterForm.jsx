@@ -3,9 +3,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Yup from "yup";
+import * as Yup from "yup";
 import { strengthColor } from "../../../utils/passwordStrengthChecker.js";
 import { useRegisterUserMutation } from "../authApiSlice.js";
+import Spinner from "../../../components/Spinner.jsx";
 
 import {
     Box,
@@ -75,15 +76,15 @@ function RegisterForm() {
                     submit: null,
                 }}
                 validationSchema={Yup.object().shape({
+                    email: Yup.string()
+                        .email("Необходим валидный адрес эл.почты")
+                        .required("Эл.почта обязательна для заполнения"),
                     firstName: Yup.string()
                         .max(255)
                         .required("Имя обязательно для заполнения"),
                     lastName: Yup.string()
                         .max(255)
                         .required("Фамилия обязательна для заполнения"),
-                    email: Yup.string()
-                        .email("Необходим валидный адрес эл.почты")
-                        .required("Эл.почта обязательна для заполнения"),
                     username: Yup.string()
                         .matches(
                             USERNAME_REGEXP,
@@ -123,7 +124,7 @@ function RegisterForm() {
                         {isLoading && <Spinner />}
                         {!isLoading && (
                             <Grid spacing={3}>
-                                {/* FirstName */}
+                                {/* firstName */}
                                 <Grid item xs={12} md={6}>
                                     <Stack spacing={1}>
                                         <InputLabel htmlFor="firstName-signup">
@@ -149,12 +150,12 @@ function RegisterForm() {
                                                     error
                                                     id="helper-text-firstName-signup"
                                                 >
-                                                    {errors.email}
+                                                    {errors.firstName}
                                                 </FormHelperText>
                                             )}
                                     </Stack>
                                 </Grid>
-                                {/* LastName */}
+                                {/* lastName */}
                                 <Grid item xs={12} md={6}>
                                     <Stack spacing={1}>
                                         <InputLabel htmlFor="lastName-signup">
@@ -180,12 +181,12 @@ function RegisterForm() {
                                                     error
                                                     id="helper-text-lastName-signup"
                                                 >
-                                                    {errors.email}
+                                                    {errors.lastName}
                                                 </FormHelperText>
                                             )}
                                     </Stack>
                                 </Grid>
-                                {/* Username */}
+                                {/* username */}
                                 <Grid item xs={12} md={6}>
                                     <Stack spacing={1}>
                                         <InputLabel htmlFor="username-signup">
@@ -211,7 +212,7 @@ function RegisterForm() {
                                                     error
                                                     id="helper-text-username-signup"
                                                 >
-                                                    {errors.email}
+                                                    {errors.username}
                                                 </FormHelperText>
                                             )}
                                     </Stack>
@@ -271,12 +272,12 @@ function RegisterForm() {
                                                 <InputAdornment position="end">
                                                     <IconButton
                                                         aria-label="toggle password visibility"
-                                                        onClick={{
-                                                            handleShowHidePw,
-                                                        }}
-                                                        onMouseDown={{
-                                                            handleShowHidePw,
-                                                        }}
+                                                        onClick={
+                                                            handleShowHidePw
+                                                        }
+                                                        onMouseDown={
+                                                            handleShowHidePw
+                                                        }
                                                         edge="end"
                                                         size="medium"
                                                     >
@@ -352,12 +353,12 @@ function RegisterForm() {
                                                 <InputAdornment position="end">
                                                     <IconButton
                                                         aria-label="toggle password confirm visibility"
-                                                        onClick={{
-                                                            handleShowHideCPw,
-                                                        }}
-                                                        onMouseDown={{
-                                                            handleShowHideCPw,
-                                                        }}
+                                                        onClick={
+                                                            handleShowHideCPw
+                                                        }
+                                                        onMouseDown={
+                                                            handleShowHideCPw
+                                                        }
                                                         edge="end"
                                                         size="medium"
                                                     >
@@ -422,6 +423,7 @@ function RegisterForm() {
                                             type="submit"
                                             variant="contained"
                                             color="secondary"
+                                            sx={{ mt: "20px" }}
                                         >
                                             Создать учётную запись
                                         </Button>
