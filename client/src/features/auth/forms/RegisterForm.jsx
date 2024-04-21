@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { strengthColor } from "../../../utils/passwordStrengthChecker.js";
 import { useRegisterUserMutation } from "../authApiSlice.js";
-import Spinner from "../../../components/Spinner.jsx";
 
 import {
     Box,
@@ -25,7 +24,7 @@ import {
 
 import { Formik } from "formik";
 import AuthButtonAnimation from "../../../animations/authButtonAnimation.js";
-// import Spinner from '../../../animations/'
+import Spinner from "../../../components/Spinner.jsx";
 import useTitle from "../../../hooks/useTitle.jsx";
 
 const USERNAME_REGEXP = /^[A-za-z][A-Za-z0-9./@-]*$/;
