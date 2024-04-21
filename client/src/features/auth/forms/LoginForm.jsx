@@ -24,7 +24,7 @@ import { Formik } from "formik";
 import AuthButtonAnimation from "../../../animations/authButtonAnimation.js";
 import Spinner from "../../../components/Spinner.jsx";
 import useTitle from "../../../hooks/useTitle.jsx";
-import { useLoginUserMutation } from "../authApiSlice.js";
+import { useAuthUserMutation } from "../authApiSlice.js";
 import { logIn } from "../authSlice.js";
 
 function LoginForm() {
@@ -43,7 +43,7 @@ function LoginForm() {
 
     const handleMouseDownPassword = (e) => e.preventDefault;
 
-    const [loginUser, { data, isLoading, isSuccess }] = useLoginUserMutation();
+    const [loginUser, { data, isLoading, isSuccess }] = useAuthUserMutation();
     useEffect(() => {
         if (isSuccess) {
             navigate(from, { replace: true });
@@ -141,7 +141,6 @@ function LoginForm() {
                                             onBlur={handleBlur}
                                             onChange={(e) => {
                                                 handleChange(e);
-                                                changePassword(e.target.value);
                                             }}
                                             endAdornment={
                                                 <InputAdornment position="end">

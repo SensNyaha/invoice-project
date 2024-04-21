@@ -23,14 +23,14 @@ const baseQueryWithRefreshToken = async (args, api, extra) => {
             api,
             extra
         );
-    }
 
-    if (refreshResponse?.data) {
-        api.dispatch(logIn({ ...refreshResponse.data }));
+        if (refreshResponse?.data) {
+            api.dispatch(logIn({ ...refreshResponse.data }));
 
-        response = await baseQuery(args, api, extra);
-    } else {
-        api.dispatch(logOut());
+            response = await baseQuery(args, api, extra);
+        } else {
+            api.dispatch(logOut());
+        }
     }
 
     return response;

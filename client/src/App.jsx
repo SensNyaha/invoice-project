@@ -11,6 +11,7 @@ import useTitle from "./hooks/useTitle.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import RegisterPage from "./features/auth/pages/RegisterPage.jsx";
 import VerificationPage from "./features/auth/pages/VerificationPage.jsx";
+import LoginPage from "./features/auth/pages/LoginPage.jsx";
 
 const App = () => {
     useTitle("Чековая книжка - Стартовая страница");
@@ -22,6 +23,7 @@ const App = () => {
                     <Route index element={<HomePage />} />
                     <Route path="register" element={<RegisterPage />} />
                     <Route path="auth/verify" element={<VerificationPage />} />
+                    <Route path="login" element={<LoginPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
