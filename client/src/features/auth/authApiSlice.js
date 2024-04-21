@@ -1,4 +1,5 @@
-import { baseApiSlice } from "../api/baseApiSlice";
+import { baseApiSlice } from "../api/baseApiSlice.js";
+import { logOut } from "./authSlice.js";
 
 export const authApiSlice = baseApiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -16,7 +17,25 @@ export const authApiSlice = baseApiSlice.injectEndpoints({
                 body: credits,
             }),
         }),
+        logOutUser: builder.mutation({
+            query: (credits) => ({
+                url: "/auth/logout",
+                method: "get",
+            }),
+        }),
+        async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+            try {
+                dispatch(logOut());
+                dispatch(baseApiSlice.util.resetApiState());
+            } catch (e) {
+                console.log(e);
+            }
+        },
     }),
 });
 
-export const { useRegisterUserMutation, useAuthUserMutation } = authApiSlice;
+export const {
+    useRegisterUserMutation,
+    useAuthUserMutation,
+    useLogOutUserMutation,
+} = authApiSlice;
