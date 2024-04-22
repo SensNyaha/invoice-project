@@ -18,8 +18,8 @@ import { deepOrange } from "@mui/material/colors";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useLogoutUserMutation } from "../../features/auth/authApiSlice";
-import useAuthUser from "../../hooks/useAuthUser";
+import { useLogOutUserMutation } from "../../features/auth/authApiSlice.js";
+import useAuthUser from "../../hooks/useAuthUser.jsx";
 
 const StyledMenuItem = styled(MenuItem)({
     "&:hover": {
@@ -49,7 +49,7 @@ const ProfileInfo = ({ user }) => {
         setAnchorEl(null);
     };
 
-    const [logoutUser, { data, isSuccess }] = useLogoutUserMutation();
+    const [logoutUser, { data, isSuccess }] = useLogOutUserMutation();
 
     const handleLogout = async () => {
         try {
@@ -198,8 +198,8 @@ const ProfileInfo = ({ user }) => {
                                                     </Typography>
                                                     <Typography variant="body2">
                                                         {isAdmin
-                                                            ? "Project Admin"
-                                                            : "Product User"}
+                                                            ? "Администратор"
+                                                            : "Пользователь"}
                                                     </Typography>
                                                 </Stack>
                                             </Stack>
@@ -230,8 +230,8 @@ const ProfileInfo = ({ user }) => {
                                                         color="#CFD8DC"
                                                     >
                                                         {isAdmin
-                                                            ? "Project Admin"
-                                                            : "Product User"}
+                                                            ? "Администратор"
+                                                            : "Пользователь"}
                                                     </Typography>
                                                 </Stack>
                                             </Stack>
@@ -249,16 +249,19 @@ const ProfileInfo = ({ user }) => {
                                     <Stack
                                         direction="row"
                                         alignItems="center"
-                                        spacing={2}
+                                        spacing={0.25}
                                     >
                                         <ListItemIcon>
                                             <SentimentSatisfiedAltTwoToneIcon
                                                 color="blue"
-                                                sx={{ fontSize: 45 }}
+                                                sx={{ fontSize: 20 }}
                                             />
                                         </ListItemIcon>
-                                        <Typography variant="h6">
-                                            View Profile
+                                        <Typography
+                                            variant="h6"
+                                            fontSize="16px"
+                                        >
+                                            Посмотреть профиль
                                         </Typography>
                                     </Stack>
                                 </Grid>
@@ -272,16 +275,19 @@ const ProfileInfo = ({ user }) => {
                                     <Stack
                                         direction="row"
                                         alignItems="center"
-                                        spacing={2}
+                                        spacing={0.25}
                                     >
                                         <ListItemIcon>
                                             <SpeedTwoToneIcon
                                                 color="yellow"
-                                                sx={{ fontSize: 45 }}
+                                                sx={{ fontSize: 20 }}
                                             />
                                         </ListItemIcon>
-                                        <Typography variant="h6">
-                                            Dashboard
+                                        <Typography
+                                            variant="h6"
+                                            fontSize="16px"
+                                        >
+                                            Рабочая панель
                                         </Typography>
                                     </Stack>
                                 </Grid>
@@ -294,16 +300,19 @@ const ProfileInfo = ({ user }) => {
                                     <Stack
                                         direction="row"
                                         alignItems="center"
-                                        spacing={2}
+                                        spacing={0.25}
                                     >
                                         <ListItemIcon>
                                             <Logout
                                                 color="green"
-                                                sx={{ fontSize: 45 }}
+                                                sx={{ fontSize: 20 }}
                                             />
                                         </ListItemIcon>
-                                        <Typography variant="h6">
-                                            Logout
+                                        <Typography
+                                            variant="h6"
+                                            fontSize="16px"
+                                        >
+                                            Выйти из профиля
                                         </Typography>
                                     </Stack>
                                 </Grid>

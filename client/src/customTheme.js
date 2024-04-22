@@ -1,4 +1,4 @@
-import {createTheme} from "@mui/material";
+import { createTheme } from "@mui/material";
 
 export const customTheme = createTheme({
     palette: {
@@ -6,47 +6,47 @@ export const customTheme = createTheme({
             default: "#f8f9fa",
         },
         indigo: {
-            main: "#6610f2"
+            main: "#6610f2",
         },
         orange: {
-            main: "#f4511e"
+            main: "#f4511e",
         },
         green: {
-            main: "#07f011"
+            main: "#07f011",
         },
         blue: {
-            main: "#34aadc"
+            main: "#34aadc",
         },
         yellow: {
-            main: "#f57c00"
+            main: "#f57c00",
         },
         darkRed: {
-            main: "#7f0000"
-        }
+            main: "#7f0000",
+        },
     },
     components: {
         MuiDrawer: {
             styleOverrides: {
                 paper: {
-                    "backgroundColor": "#000",
-                    color: "#fff"
-                }
-            }
+                    backgroundColor: "#000",
+                    color: "#fff",
+                },
+            },
         },
         MuiAppBar: {
             styleOverrides: {
                 root: {
-                    "backgroundColor": "#000",
-                    color: "#fff"
-                }
-            }
+                    backgroundColor: "#000",
+                    color: "#fff",
+                },
+            },
         },
         MuiListItemText: {
             styleOverrides: {
                 primary: {
-                    fontSize: "1.3rem"
-                }
-            }
-        }
-    }
-})
+                    fontSize: "1.1rem",
+                },
+            },
+        },
+    },
+});

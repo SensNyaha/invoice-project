@@ -9,9 +9,9 @@ import { styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Logo from "./Logo.js";
-import MenuList from "./MenuList.js";
-import ProfileInfo from "./ProfileInfo.js";
+import Logo from "./Logo.jsx";
+import MenuList from "./MenuList.jsx";
+import ProfileInfo from "./ProfileInfo.jsx";
 
 const drawerWidth = 240;
 

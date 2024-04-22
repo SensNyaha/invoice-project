@@ -12,12 +12,16 @@ import HomePage from "./pages/HomePage.jsx";
 import RegisterPage from "./features/auth/pages/RegisterPage.jsx";
 import VerificationPage from "./features/auth/pages/VerificationPage.jsx";
 import LoginPage from "./features/auth/pages/LoginPage.jsx";
+import NavBar from "./components/navbar/index.jsx";
+import { useSelector } from "react-redux";
 
 const App = () => {
     useTitle("Чековая книжка - Стартовая страница");
+    const { user } = useSelector((state) => state.auth);
     return (
         <ThemeProvider theme={customTheme}>
             <CssBaseline />
+            {user ? <NavBar /> : null}
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />

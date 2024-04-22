@@ -22,15 +22,16 @@ export const authApiSlice = baseApiSlice.injectEndpoints({
                 url: "/auth/logout",
                 method: "get",
             }),
+
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    dispatch(logOut());
+                    dispatch(baseApiSlice.util.resetApiState());
+                } catch (e) {
+                    console.log(e);
+                }
+            },
         }),
-        async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-            try {
-                dispatch(logOut());
-                dispatch(baseApiSlice.util.resetApiState());
-            } catch (e) {
-                console.log(e);
-            }
-        },
     }),
 });
 
